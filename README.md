@@ -15,7 +15,7 @@ A verified rental house finder and broker transparency system for Ethiopia.
 
 - Frontend: static HTML/CSS/JavaScript
 - Backend: Node.js + Express
-- Database: MySQL
+- Database: PostgreSQL
 
 ## Setup
 
@@ -26,14 +26,17 @@ A verified rental house finder and broker transparency system for Ethiopia.
 npm install
 ```
 
-3. Create the MySQL database and tables using `models/schema.sql`.
-4. Start the app locally:
+3. Start the app locally:
 
 ```bash
 npm run dev
 ```
 
-5. Open a second terminal and run the share command if you want a temporary public link:
+4. If you do not use `DATABASE_URL`, make sure your local PostgreSQL user and password are set in `.env`.
+
+5. The app initializes the schema automatically on startup by reading `models/schema.sql`.
+
+6. Open a second terminal and run the share command if you want a temporary public link:
 
 ```bash
 npm run share
@@ -59,7 +62,7 @@ To let your teacher open the app any time without your computer staying online, 
    - Render
    - Fly.io
    - Heroku
-3. Create a MySQL database on the platform or use a cloud MySQL provider.
+3. Create a PostgreSQL database on the platform or use the provider's managed PostgreSQL service.
 4. Configure environment variables on the host:
    - `PORT`
    - `DATABASE_URL` (preferred) or `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`
@@ -88,4 +91,4 @@ https://your-app-name.onrender.com
 - `public/dashboard.html`: user dashboard for seekers, owners/brokers, and admin links
 - `public/add-listing.html`: house posting form for owners and brokers
 - `public/admin.html`: admin review dashboard for pending listings and brokers
-- `models/schema.sql`: MySQL schema for users, listings, reports, favorites, and reviews
+- `models/schema.sql`: PostgreSQL schema for users, listings, reports, favorites, and reviews
