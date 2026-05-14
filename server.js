@@ -423,6 +423,16 @@ async function startServer() {
     console.log(`Server is running on http://localhost:${port}`);
   });
 }
+app.get('/create-admin-once', async (req, res) => {
+  try {
+    const createAdmin = require('./scripts/create-admin');
+    await createAdmin();
+    res.send('Admin created successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error creating admin: ' + err.message);
+  }
+});
 
 startServer().catch(error => {
   console.error('Unable to start server:', error);
